@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>editor</title>
+    </head>
+    <body>
+        <link rel="stylesheet" href="{$smarty.const.KINDEDITOR}themes/simple/simple.css" />
+        <script charset="utf-8" src="{$smarty.const.KINDEDITOR}kindeditor.js"></script>
+        <script charset="utf-8" src="{$smarty.const.KINDEDITOR}lang/zh_CN.js"></script>
+        <script>
+            KindEditor.ready(function(K) {
+                editor = K.create('#editor_id', {
+                    basePath : '{$smarty.const.KINDEDITOR}',
+                    urlType : 'domain',
+                    uploadJson : '{$smarty.const.WEBROOT}?url=home/ajaxuploadimg',
+                    cssPath : [
+                        '{$smarty.const.KINDEDITOR}plugins/code/prettify.css'
+                    ],
+                    themeType : 'simple',
+                    width : 360,
+                    height : 200,
+                    resizeType : 0,
+                    items : [
+                        'source', 'bold', 'fontname', 'fontsize', 'forecolor',
+                        'image', 'flash', 'code', 'baidumap', 'clearhtml', 'link',
+                        'unlink', 'emoticons', 'pagebreak'
+                    ],
+                    allowFlashUpload : false
+                });
+            });
+        </script>
+        <form action="{$smarty.const.WEBROOT}?url=home/index" method="post">
+            <textarea id="editor_id" name="content" rows="10" cols="30"></textarea>
+        </form>
+    </body>
+</html>
